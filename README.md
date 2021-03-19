@@ -7,3 +7,6 @@
 
 ### Joseph Gaynier
 [Status Report 1](https://docs.google.com/document/d/1AGFBz2VhpEUI-Jp_NRYKLS5nWXgfW1A8HyqBrX8y9Rg/edit?usp=sharing)
+
+### Kaitlyn Gosline
+[Status Report 1](https://docs.google.com/document/d/1KfQzlIJl88C_0CQ8chGaAEHxzErJUIc0Uayta3L-948/edit?usp=sharing)
