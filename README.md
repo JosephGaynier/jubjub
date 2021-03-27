@@ -24,5 +24,5 @@
 
 [Status Report 2](https://docs.google.com/document/d/1q24pJgSrifTKDyyBlRU3pO_iQJ2ZEnXDYbDeenyajRU/edit?usp=sharing)
 
-### Joshua Clayton
+### Jenna Bath
 [Status Report 1]( https://docs.google.com/document/d/15N0emGSMBhAFnJnHvoyqGEurFaEsZL4-Jnb9kkuih5A/edit?usp=sharing)
