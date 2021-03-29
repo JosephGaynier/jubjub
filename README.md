@@ -15,6 +15,7 @@
 
 ### Kaitlyn Gosline
 [Status Report 1](https://docs.google.com/document/d/1KfQzlIJl88C_0CQ8chGaAEHxzErJUIc0Uayta3L-948/edit?usp=sharing)
+[Status Report 2](https://docs.google.com/document/d/1uoqRLSXsSLMnqAe7cFxJOHSgFOhozpTS-g2D7xkCym0/edit?usp=sharing) 
 
 ### Joshua Clayton
 [Status Report 1](https://docs.google.com/document/d/1ftujLBQQxIUiz9IYKRAmY6KBJx5bP4DsKQIAiCF2ftU/edit?usp=sharing)
