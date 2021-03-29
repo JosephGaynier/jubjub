@@ -32,4 +32,4 @@
 [Status Report 2](https://docs.google.com/document/d/1yRwTeBCYeZosBWWwdA-WSOmUjiVED6f_DBtzUPIn7ds/edit?usp=sharing)
 
 ### Xan Jones
-[Xan_Status_Reports]([https://docs.google.com/document/d/1C5d_-UAtFZoz1W8yLS_K4hDP3DheryX2fOp4R45bY5I/edit?usp=sharing])
+[Xan Status Reports](https://docs.google.com/document/d/1C5d_-UAtFZoz1W8yLS_K4hDP3DheryX2fOp4R45bY5I/edit?usp=sharing)
