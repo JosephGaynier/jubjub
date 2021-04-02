@@ -5,6 +5,9 @@
 
 [Status Report 2](https://docs.google.com/document/d/1--47F2d-yJngw4w7RwgIzVjaFwNyASndSAvtwhAU9Yc/edit?usp=sharing)
 
+[Status Report 3](https://docs.google.com/document/d/1_TKORM9mlKFoinqJCB7W9rCFUlXnfrimM9Mx_dAzjxI/edit?usp=sharing)
+
+
 
 ## Individual Status Preports
 
@@ -25,6 +28,8 @@
 [Status Report 1]( https://drive.google.com/file/d/1uxOMbGgz4cj4aqvYA2WCooMXsFJbYrSG/view?usp=sharing)
 
 [Status Report 2](https://docs.google.com/document/d/1q24pJgSrifTKDyyBlRU3pO_iQJ2ZEnXDYbDeenyajRU/edit?usp=sharing)
+
+[Status Report 3](https://docs.google.com/document/d/1Lk1ivtKRkngSfF0txy3f2dYP9ymrUy71VnLSievQLEA/edit?usp=sharing)
 
 ### Jenna Bath
 [Status Report 1](https://docs.google.com/document/d/15N0emGSMBhAFnJnHvoyqGEurFaEsZL4-Jnb9kkuih5A/edit?usp=sharing)
