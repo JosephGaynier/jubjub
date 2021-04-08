@@ -18,6 +18,8 @@
 
 [Status Report 3](https://docs.google.com/document/d/1mz1-b3ZAjfSUhCa3a49CwOI1bVySWTj6p0FzzoiKl1M/edit?usp=sharing)
 
+[Status Report 4](https://docs.google.com/document/d/1Vq4Y3e0T550SI7FEdhbihO0qVYrzgsnM2yzl75exAGE/edit?usp=sharing)
+
 ### Kaitlyn Gosline
 [Status Report 1](https://docs.google.com/document/d/1KfQzlIJl88C_0CQ8chGaAEHxzErJUIc0Uayta3L-948/edit?usp=sharing)
 
