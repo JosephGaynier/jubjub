@@ -10,7 +10,6 @@
 [Status Report 4](https://docs.google.com/document/d/1WbjczAFMHD7Uac4Srn-hD9dnen--hJWrkblMIeFBWGs/edit?usp=sharing)
 
 
-
 ## Individual Status Preports
 
 ### Joseph Gaynier
