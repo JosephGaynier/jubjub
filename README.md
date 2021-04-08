@@ -38,6 +38,9 @@
 
 [Status Report 3](https://docs.google.com/document/d/1Lk1ivtKRkngSfF0txy3f2dYP9ymrUy71VnLSievQLEA/edit?usp=sharing)
 
+[Status Report 4](https://docs.google.com/document/d/1WZV7N3ag1ZVsN0mLnVzhLiQ1bKmpXLF-KbUyMd0UJM4/edit?usp=sharing)
+
+
 ### Jenna Bath
 [Status Report 1](https://docs.google.com/document/d/15N0emGSMBhAFnJnHvoyqGEurFaEsZL4-Jnb9kkuih5A/edit?usp=sharing)
 
