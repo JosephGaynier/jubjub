@@ -50,5 +50,7 @@
 
 [Status Report 3](https://docs.google.com/document/d/11hy493wP5DuKwR8N7Cb_V3YCczwyG133xRmc2e0n10o/edit?usp=sharing)
 
+[Status Report 4] (https://docs.google.com/document/d/1e_jqZ9plZmSZHqIMfIWJWpnRfAhBs2PU3v6MjNaHvWQ/edit?usp=sharing)
+
 ### Xan Jones
 [Xan Status Reports](https://docs.google.com/document/d/1C5d_-UAtFZoz1W8yLS_K4hDP3DheryX2fOp4R45bY5I/edit?usp=sharing)
