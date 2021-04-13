@@ -33,6 +33,12 @@
 ### Joshua Clayton
 [Status Report 1](https://docs.google.com/document/d/1ftujLBQQxIUiz9IYKRAmY6KBJx5bP4DsKQIAiCF2ftU/edit?usp=sharing)
 
+[Status Report 2](https://docs.google.com/document/d/1HwOV8hqhLOSFakNBVd-A2tn--pTz95L66mulQRK8Qfs/edit?usp=sharing)
+
+[Status Report 3](https://docs.google.com/document/d/1kxiex64VEReUqu4jkzX9aEX6loi6PeF7YgG8bHumAbw/edit?usp=sharing)
+
+[Status Report 4](https://docs.google.com/document/d/1EaMrPqrqP-Hf16dJpbfzWzQSXmiqsNzGBgNua10Z72o/edit?usp=sharing)
+
 ### Rachel Goldman
 [Status Report 1]( https://drive.google.com/file/d/1uxOMbGgz4cj4aqvYA2WCooMXsFJbYrSG/view?usp=sharing)
 
