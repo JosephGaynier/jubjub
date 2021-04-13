@@ -7,13 +7,12 @@ from flask.templating import render_template_string
 from forms import RegisterForm, LoginForm, CommentForm
 from datetime import date
 from database import db
-from models import Comment as Comment
-from models import Note as Note
+from models import Event as Event
 from models import User as User
 import bcrypt
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///jubjub.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'SE3155'
 
