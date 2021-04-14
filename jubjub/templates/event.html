@@ -28,40 +28,25 @@
             {% endif %}
         </nav>
 
-        <h1>Welcome {{ user }} to the 49er Notes App!</h1>
+        <h1>Welcome {{ user }} to the Calendoodle App!</h1>
         
-        <h1>Note details</h1>
+        <h1>Event details</h1>
 
         <table>
             <tr>
-                <th>Title</th>
-                <th>Text</th>
-                <th>Date</th>
+                <th>Event Name</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Location</th>
             </tr>
             <tr>
-                <td>{{ note.title }}</td>
-                <td>{{ note.text }}</td>
-                <td>{{ note.date }}</td>
+                <td>{{ event.name }}</td>
+                <td>{{ event.description }}</td>
+                <td>{{ event.start_date }}</td>
+                <td>{{ event.end_date }}</td>
+                <td>{{ event.location }}</td>
             </tr>
         </table>
-        {% if note.comments %}
-            {% if note.comments|length > 0 %}
-                <h2>Comments</h2>
-                <ul>
-                {% for comment in note.comments %}
-                <li>{{ comment.content }}</li>
-                {% endfor %}
-                </ul>
-            {% endif %}
-        {% endif %}
-        <form action="{{ url_for('new_comment', note_id=note.id) }}" method="post">
-            <div class="formwrapper">
-                <h2 class="title">Add a comment</h2>
-                    <div class="form-field">
-                        {{ form.comment.label }} <br/> {{ form.comment }}
-                    </div>
-                {{ form.submit }}
-            </div>
-        </form>
     </body>
 </html>
