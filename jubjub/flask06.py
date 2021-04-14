@@ -51,7 +51,7 @@ def get_note(note_id):
     if session.get('user'):
         my_note = db.session.query(Note).filter_by(id=note_id).one()
         form = CommentForm()
-        return render_template('note.html', note=my_note, user=session['user'], form=form)
+        return render_template('event.html', note=my_note, user=session['user'], form=form)
     else:
         return redirect(url_for('login'))
 
