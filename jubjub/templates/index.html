@@ -12,10 +12,9 @@
     <body>
         <nav>
             <a href="{{ url_for('index') }}">Dashboard</a> ||
-            <a href="{{ url_for('events') }}">Friends</a> ||
-            <a href="{{ url_for('events') }}">Event Requests</a> ||
+            <a href="{{ url_for('get_events') }}">Events</a> ||
+            <a href="{{ url_for('new_event') }}">Add Event</a> ||
             <a href="{{ url_for('profile') }}">My Profile</a>
-
         </nav>
         {% if user %}
             <nav>
