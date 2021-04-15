@@ -29,7 +29,7 @@
         </nav>
 
         <h1>Welcome {{user}} to Calendoodle!</h1>
-        {% if note %}
+        {% if event %}
             <form action="{{ url_for('update_event', event_id=event.id) }}" method="post">
         {% else %}
             <form action="new" method="post">
