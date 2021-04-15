@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="UNCC Notes App">
+        <meta name="description" content="Calendoodle App">
         <title>Calendoodle Dashboard</title>
         <!-- styles -->
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
@@ -12,8 +12,10 @@
     <body>
         <nav>
             <a href="{{ url_for('index') }}">Dashboard</a> ||
-            <a href="{{ url_for('get_notes') }}">My Events</a> ||
-            <a href="{{ url_for('new_note') }}">My Profile</a>
+            <a href="{{ url_for('events') }}">Friends</a> ||
+            <a href="{{ url_for('events') }}">Event Requests</a> ||
+            <a href="{{ url_for('profile') }}">My Profile</a>
+
         </nav>
         {% if user %}
             <nav>
@@ -29,7 +31,7 @@
 
         <h2></h2>
 
-        <h3>My Feed</h3>
+        <h3>My Feed</h3> <!--Attached to my Events html file-->
 
         <h3>My Events</h3>
 
