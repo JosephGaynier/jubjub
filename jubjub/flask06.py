@@ -41,7 +41,7 @@ def get_notes():
     if session.get('user'):
         my_notes = db.session.query(Note).filter_by(
             user_id=session['user_id']).all()
-        return render_template('notes.html', notes=my_notes, user=session['user'])
+        return render_template('events.html', notes=my_notes, user=session['user'])
     else:
         return redirect(url_for('login'))
 
