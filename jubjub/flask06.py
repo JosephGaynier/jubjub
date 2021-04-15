@@ -21,12 +21,6 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-notes = {
-    1: {'title': 'First note', 'text': 'This is my first note', 'date': '10-1-2020'},
-    2: {'title': 'Second note', 'text': 'This is my second note', 'date': '10-2-2020'},
-    3: {'title': 'Third note', 'text': 'This is my third note', 'date': '10-3-2020'},
-}
-
 
 @app.route('/')
 @app.route('/index')
@@ -36,70 +30,71 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/notes')
-def get_notes():
+@app.route('/events')
+def get_events():
     if session.get('user'):
-        my_notes = db.session.query(Note).filter_by(
+        my_events = db.session.query(Event).filter_by(
             user_id=session['user_id']).all()
-        return render_template('events.html', notes=my_notes, user=session['user'])
+        return render_template('events.html', events=my_events, user=session['user'])
     else:
         return redirect(url_for('login'))
 
 
-@app.route('/notes/<note_id>')
-def get_note(note_id):
+@app.route('/events/<event_id>')
+def get_event(event_id):
     if session.get('user'):
-        my_note = db.session.query(Note).filter_by(id=note_id).one()
+        my_event = db.session.query(Event).filter_by(id=event_id).one()
         form = CommentForm()
-        return render_template('event.html', note=my_note, user=session['user'], form=form)
+        return render_template('event.html', event=my_event, user=session['user'], form=form)
     else:
         return redirect(url_for('login'))
 
 
-@app.route('/notes/new', methods=['GET', 'POST'])
-def new_note():
+@app.route('/events/new', methods=['GET', 'POST'])
+def new_event():
     if session.get('user'):
         if request.method == 'POST':
             title = request.form['title']
-            text = request.form['noteText']
+            text = request.form['eventText']
             today = date.today()
             today = today.strftime("%m-%d-%Y")
+            // Needs changed
             newEntry = Note(title, text, today, session['user_id'])
             db.session.add(newEntry)
             db.session.commit()
-            return redirect(url_for('get_notes'))
+            return redirect(url_for('get_events'))
         else:
             return render_template('new.html', user=session['user'])
     else:
         return redirect(url_for('login'))
 
 
-@app.route('/notes/edit/<note_id>', methods=['GET', 'POST'])
-def update_note(note_id):
+@app.route('/events/edit/<event_id>', methods=['GET', 'POST'])
+def update_event(event_id):
     if session.get('user'):
         if request.method == 'POST':
             title = request.form['title']
             text = request.form['noteText']
-            note = db.session.query(Note).filter_by(id=note_id).one()
+            event = db.session.query(Event).filter_by(id=event_id).one()
             note.title = title
             note.text = text
             db.session.add(note)
             db.session.commit()
-            return redirect(url_for('get_notes'))
+            return redirect(url_for('get_events'))
         else:
-            my_note = db.session.query(Note).filter_by(id=note_id).one()
-            return render_template('new.html', note=my_note, user=session['user'])
+            my_note = db.session.query(Event).filter_by(id=event_id).one()
+            return render_template('new.html', event=my_event, user=session['user'])
     else:
         return redirect(url_for('login'))
 
 
-@app.route('/notes/delete/<note_id>', methods=['POST'])
-def delete_note(note_id):
+@app.route('/events/delete/<event_id>', methods=['POST'])
+def delete_event(event_id):
     if session.get('user'):
-        my_note = db.session.query(Note).filter_by(id=note_id).one()
-        db.session.delete(my_note)
+        my_event = db.session.query(Event).filter_by(id=event_id).one()
+        db.session.delete(my_event)
         db.session.commit()
-        return redirect(url_for('get_notes'))
+        return redirect(url_for('get_events'))
     else:
         return redirect(url_for('login'))
 
@@ -121,7 +116,7 @@ def register():
             email=request.form['email']).one()
         session['user_id'] = the_user.id
 
-        return redirect(url_for('get_notes'))
+        return redirect(url_for('get_events'))
     return render_template('register.html', form=form)
 
 
@@ -134,7 +129,7 @@ def login():
         if bcrypt.checkpw(request.form['password'].encode('utf-8'), the_user.password):
             session['user'] = the_user.first_name
             session['user_id'] = the_user.id
-            return redirect(url_for('get_notes'))
+            return redirect(url_for('get_events'))
         login_form.password.errors = ["Incorrect username or password."]
         return render_template("login.html", form=login_form)
     else:
@@ -147,7 +142,7 @@ def logout():
         session.clear()
     return redirect(url_for('index'))
 
-
+#remove?
 @app.route('/notes/<note_id>/comment', methods=['POST'])
 def new_comment(note_id):
     if session.get('user'):
