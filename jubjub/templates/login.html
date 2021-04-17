@@ -9,7 +9,7 @@
     <body>
         <div class="navdiv">
             <nav>
-                <a href="{{ url_for('index') }}">Home</a> ||
+                <a href="{{ url_for('index') }}">Home</a>
             </nav>
             {% if user %}
                 <nav>
@@ -23,6 +23,7 @@
         </div>
 
         <h1>Welcome {% if user %}{{user}}{% endif %}to the Calendoodle App!</h1>
+        <img class="header" src="jubjub/photos/logo.jpg" alt="calendoodle">
 
         <h2>Use this site to maintain and organize your events. <br>Sign in or Create an account to get started!</h2>
         <div class="formwrapper">
