@@ -58,7 +58,10 @@ def new_event():
             location = request.form['location']
             description = request.form['description']
             color = request.form['color']
-            is_public = request.form['is_public']
+            if 'is_public' in request.form:
+                is_public = True
+            else:
+                is_public = False
             start_date = date.today()
             end_date = date.today()
 
@@ -81,7 +84,10 @@ def update_event(event_id):
             event.location = request.form['location']
             event.description = request.form['description']
             event.color = request.form['color']
-            event.is_public = request.form['name']
+            if 'is_public' in request.form:
+                event.is_public = True
+            else:
+                event.is_public = False
             event.start_date = date.today()
             event.end_date = date.today()
             db.session.commit()
