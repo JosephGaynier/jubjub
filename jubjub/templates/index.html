@@ -11,9 +11,10 @@
     </head>
     <body>
         <nav>
-            <a href="{{ url_for('index') }}">Dashboard</a> ||
-            <a href="{{ url_for('get_events') }}">Events</a> ||
-            <a href="{{ url_for('new_event') }}">Add Event</a> ||
+            <a href="{{ url_for('index') }}">Dashboard</a> ||<br>
+            <a href="{{ url_for('get_events') }}">Event Requests</a> ||
+            <a>Friends</a> ||<br>
+            <a>My Profile</a>
         </nav>
         {% if user %}
             <nav>
