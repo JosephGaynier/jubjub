@@ -15,7 +15,7 @@ class User(db.Model):
     email = db.Column("email", db.String(100))
     password = db.Column(db.String(255), nullable=False)
     registered_on = db.Column(db.DateTime, nullable=False)
-    events = db.relationship("Event", secondary=event_user, backref="users")
+    events = db.relationship("Event", backref="user", lazy=True)
 
     def __init__(self, first_name, last_name, email, password):
         self.first_name = first_name
@@ -34,6 +34,7 @@ class Event(db.Model):
     description = db.Column(db.String(1000), nullable=False)
     color = db.Column(db.String(20), nullable=False)
     is_public = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
     def __init__(self, name, start_date, end_date, location, description, color):
         self.name = name
@@ -43,3 +44,4 @@ class Event(db.Model):
         self.description = description
         self.color = color
         self.date_posted = datetime.date.today()
+
