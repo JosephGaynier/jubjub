@@ -12,10 +12,9 @@
     <body>
         <nav>
             <nav>
-                <a href="{{ url_for('index') }}">Dashboard</a> ||<br>
-                <a href="{{ url_for('get_events') }}">Event Requests</a> ||
-                <a>Friends</a> ||<br>
-                <a>My Profile</a>
+                <a href="{{ url_for('index') }}">Home</a> ||
+                <a href="{{ url_for('get_events') }}">My Events</a> ||
+                <a href="{{ url_for('new_event') }}">Add Events</a>
             </nav>
             {% if user %}
                 <nav>
@@ -24,6 +23,7 @@
             {% else %}
                 <nav>
                     <a href="{{ url_for('login') }}">Sign In</a>
+                    <a href="{{ url_for('register') }}">Register</a>
                 </nav>
             {% endif %}
         </nav>
