@@ -58,10 +58,9 @@ def new_event():
             text = request.form['eventText']
             today = date.today()
             today = today.strftime("%m-%d-%Y")
-            // Needs changed
-            newEntry = Event(title, text, today, session['user_id'])
-            db.session.add(newEntry)
-            db.session.commit()
+            #newEntry = Event(title, text, today, session['user_id'])
+            #db.session.add(newEntry)
+            #db.session.commit()
             return redirect(url_for('get_events'))
         else:
             return render_template('new.html', user=session['user'])

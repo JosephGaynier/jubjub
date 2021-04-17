@@ -14,7 +14,6 @@
             <a href="{{ url_for('index') }}">Dashboard</a> ||
             <a href="{{ url_for('get_events') }}">Events</a> ||
             <a href="{{ url_for('new_event') }}">Add Event</a> ||
-            <a href="{{ url_for('profile') }}">My Profile</a>
         </nav>
         {% if user %}
             <nav>
@@ -33,7 +32,5 @@
         <h3>My Feed</h3> <!--Attached to my Events html file-->
 
         <h3>My Events</h3>
-
-        <a href="{{ url_for('new_note') }}">New Event</a>
     </body>
 </html>
