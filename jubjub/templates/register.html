@@ -11,9 +11,10 @@
 
             <nav>
                 <nav>
-                    <a href="{{ url_for('index') }}">Home</a> ||
-                    <a href="{{ url_for('get_events') }}">My Events</a> ||
-                    <a href="{{ url_for('new_event') }}">Add Event</a>
+                    <a href="{{ url_for('index') }}">Dashboard</a> ||<br>
+                    <a href="{{ url_for('get_events') }}">Event Requests</a> ||
+                    <a>Friends</a> ||<br>
+                    <a>My Profile</a>
                 </nav>
                 {% if user %}
                     <nav>
@@ -22,13 +23,12 @@
                 {% else %}
                     <nav>
                         <a href="{{ url_for('login') }}">Sign In</a>
-                        <a href="{{ url_for('register') }}">Register</a>
                     </nav>
                 {% endif %}
             </nav>
         
         </div>
-        <h1>Welcome {% if user %}{{user}}{% endif %}to the Calendoodle App! App!</h1>
+        <h1>Welcome {% if user %}{{user}}{% endif %}to the Calendoodle App! </h1>
 
         <h2>Use this site to organize and RSVP to events.</h2>
         <div class="formwrapper">

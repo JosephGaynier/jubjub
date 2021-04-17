@@ -4,7 +4,15 @@ body {
 h1 {
   color: green;
 }
-h2 {
-  color: gold;
-  background: green;
+.header{
+  color: black;
+  background: #fbdb5c;
+  text-align: center;
+}
+nav {
+    display: inline;
+}
+img{
+    width: 300px;
+    align: center;
 }
