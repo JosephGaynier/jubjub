@@ -34,20 +34,35 @@
         {% else %}
             <form action="new" method="post">
         {% endif %}
-                <p><label>Title </label></p>
+                <p><label>Name </label></p>
                 <p>  
-                    <input type="text" name="title" value="{% if event %}{{event.title}} {% endif %}"/>
+                    <input type="text" name="name" value="{% if event %}{{event.name}} {% endif %}"/>
                 </p>
-                <p><label>Event </label></p>
+                <p><label>Start Date </label></p>
                 <p>
-                    <textarea name="eventText"  rows="6" cols="0" >
-                        {% if event %}
-                            {{event.text}}
-                        {% else %}
-                            Add your new event here ...
-                        {% endif %}
-                    </textarea>
+                    <input type="text" name="start_date" value="{% if event %}{{event.start_date}} {% endif %}"/>
                 </p>
+                <p><label>End Date </label></p>
+                <p>
+                    <input type="text" name="end_date" value="{% if event %}{{event.end_date}} {% endif %}"/>
+                </p>
+                <p><label>Location </label></p>
+                <p>
+                    <input type="text" name="location" value="{% if event %}{{event.location}} {% endif %}"/>
+                </p>
+                <p><label>Description </label></p>
+                <p>
+                    <input type="text" name="description" value="{% if event %}{{event.description}} {% endif %}"/>
+                </p>
+                <p><label>Color </label></p>
+                <p>
+                    <input type="text" name="color" value="{% if event %}{{event.color}} {% endif %}"/>
+                </p>
+                <p><label>Make Public </label></p>
+                <p>
+                    <input type="checkbox" name="is_public" value="{% if event %}{{event.is_public}} {% endif %}" />
+                </p>
+
                 <p>
                     {% if event %}
                         <input type="submit" value="Update Event"/>

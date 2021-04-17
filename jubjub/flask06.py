@@ -54,13 +54,17 @@ def get_event(event_id):
 def new_event():
     if session.get('user'):
         if request.method == 'POST':
-            title = request.form['title']
-            text = request.form['eventText']
-            today = date.today()
-            today = today.strftime("%m-%d-%Y")
-            #newEntry = Event(title, text, today, session['user_id'])
-            #db.session.add(newEntry)
-            #db.session.commit()
+            name = request.form['name']
+            location = request.form['location']
+            description = request.form['description']
+            color = request.form['color']
+            is_public = request.form['is_public']
+            start_date = date.today()
+            end_date = date.today()
+
+            newEntry = Event(name, start_date, end_date, location, description, color, is_public, session['user_id'])
+            db.session.add(newEntry)
+            db.session.commit()
             return redirect(url_for('get_events'))
         else:
             return render_template('new.html', user=session['user'])
@@ -72,12 +76,14 @@ def new_event():
 def update_event(event_id):
     if session.get('user'):
         if request.method == 'POST':
-            title = request.form['title']
-            text = request.form['eventText']
             event = db.session.query(Event).filter_by(id=event_id).one()
-            event.title = title
-            event.text = text
-            db.session.add(event)
+            event.name = request.form['name']
+            event.location = request.form['location']
+            event.description = request.form['description']
+            event.color = request.form['color']
+            event.is_public = request.form['name']
+            event.start_date = date.today()
+            event.end_date = date.today()
             db.session.commit()
             return redirect(url_for('get_events'))
         else:

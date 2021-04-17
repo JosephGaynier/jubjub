@@ -34,13 +34,19 @@
 
        <table>
            <tr>
-               <th>Title</th>
-               <th>Date</th>
-           </tr>
+                <th>Event Name</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Location</th>
+            </tr>
            {% for event in events %}
            <tr>
-               <td><a href="{{ url_for('get_event', event_id=event.id) }}">{{ event.title }}</a></td>
-               <td>{{ event.date }}</td>
+               <td><a href="{{ url_for('get_event', event_id=event.id) }}">{{ event.name }}</a></td>
+               <td>{{ event.description }}</td>
+                <td>{{ event.start_date }}</td>
+                <td>{{ event.end_date }}</td>
+                <td>{{ event.location }}</td>
                <td><a href="{{ url_for('update_event', event_id=event.id) }}">Edit</a></td>
                <td>
                    <form action="{{ url_for('delete_event', event_id=event.id) }}" method="post">
