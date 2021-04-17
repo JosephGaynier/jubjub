@@ -30,13 +30,14 @@ class Event(db.Model):
     name = db.Column(db.String(50), nullable=False)
     start_date = db.Column(db.DateTime, nullable=False)
     end_date = db.Column(db.DateTime, nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False)
     location = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(1000), nullable=False)
     color = db.Column(db.String(20), nullable=False)
     is_public = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
-    def __init__(self, name, start_date, end_date, location, description, color):
+    def __init__(self, name, start_date, end_date, location, description, color, is_public, user_id):
         self.name = name
         self.start_date = start_date
         self.end_date = end_date
@@ -44,4 +45,5 @@ class Event(db.Model):
         self.description = description
         self.color = color
         self.date_posted = datetime.date.today()
-
+        self.is_public = is_public
+        self.user_id = user_id
