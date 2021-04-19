@@ -34,6 +34,8 @@
 
 [Status Report 4](https://docs.google.com/document/d/10vcApA-nsthXDZyVcnm4sM4Jw2uKNgm24BZUGjh203w/edit?usp=sharing)
 
+[Status Report 5](https://docs.google.com/document/d/1ho2TWp78yI1GxXJFdnhrKxg89E9hL0B9QbRrOTpUF5k/edit?usp=sharing)
+
 ### Joshua Clayton
 [Status Report 1](https://docs.google.com/document/d/1ftujLBQQxIUiz9IYKRAmY6KBJx5bP4DsKQIAiCF2ftU/edit?usp=sharing)
 
