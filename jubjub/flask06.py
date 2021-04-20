@@ -4,7 +4,7 @@ from flask import request
 from flask import redirect, url_for
 from flask import session
 from flask.templating import render_template_string
-from forms import RegisterForm, LoginForm, CommentForm
+from forms import RegisterForm, LoginForm, searchForm
 from datetime import date
 from database import db
 from models import Event as Event
@@ -109,6 +109,13 @@ def delete_event(event_id):
     else:
         return redirect(url_for('login'))
 
+@app.route('/search', methods=['POST'])
+def register():
+    form = SearchForm()
+    if form.validate_on_submit():
+        searchString = request.form['search']
+        return redirect(url_for('get_events'))
+    return render_template('register.html', form=form)
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():

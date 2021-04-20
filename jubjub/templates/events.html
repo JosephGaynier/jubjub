@@ -33,6 +33,11 @@
 
        <h1>My Feed</h1>
 
+       <form method="POST" action="/register">
+            <div class="form-field">{{ form.firstname.label }} {{ form.firstname }}</div>
+            {{ form.submit }}
+        </form>
+
        <table>
            <tr>
                 <th>Event Name</th>
