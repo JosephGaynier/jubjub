@@ -2,17 +2,27 @@ body {
   padding: 30px 30px;
 }
 h1 {
-  color: green;
+  color: black;
 }
+.signin{
+  text-align: center;
+  color: black;
+  background: #fbdb5c;
+  margin: auto;
+}
+
 .header{
   color: black;
   background: #fbdb5c;
   text-align: center;
+  width: 100%;
+  margin: auto;
+}
+.image{
+  width:150px;
 }
 nav {
     display: inline;
+    float: right;
 }
-img{
-    width: 300px;
-    align: center;
-}
+

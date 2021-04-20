@@ -163,6 +163,14 @@ def logout():
         session.clear()
     return redirect(url_for('index'))
 
+@app.route('/profile')
+def get_profile():
+    if session.get('user'):
+        curr_user = db.session.query(User).filter_by(first_name=session['user']).one()
+        return render_template('profile.html', user=curr_user)
+    else:
+        return redirect(url_for('login'))
+
 
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(
     os.getenv('PORT', 5000)), debug=True)
