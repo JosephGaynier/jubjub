@@ -9,6 +9,8 @@
 
 [Status Report 4](https://docs.google.com/document/d/1WbjczAFMHD7Uac4Srn-hD9dnen--hJWrkblMIeFBWGs/edit?usp=sharing)
 
+[Status Report 5](https://docs.google.com/document/d/1lmPiH6Bb_Jj2S4bGdym8KGI_e9uY-cAHz67d-9MPhGQ/edit?usp=sharing)
+
 
 ## Individual Status Preports
 
@@ -21,6 +23,10 @@
 
 [Status Report 4](https://docs.google.com/document/d/1Vq4Y3e0T550SI7FEdhbihO0qVYrzgsnM2yzl75exAGE/edit?usp=sharing)
 
+[Status Report 5](https://docs.google.com/document/d/1FQaTsFcaa3gnkmtAi7ho251O4eZv9zN6l_Heq_-xHHg/edit?usp=sharing)
+
+[Status Report 6](https://docs.google.com/document/d/17gA4wQwE_nIGz0NlNM_K9i3noO0JQdeb20x1Ql_v4ls/edit?usp=sharing)
+
 ### Kaitlyn Gosline
 [Status Report 1](https://docs.google.com/document/d/1KfQzlIJl88C_0CQ8chGaAEHxzErJUIc0Uayta3L-948/edit?usp=sharing)
 
@@ -29,6 +35,8 @@
 [Status Report 3](https://docs.google.com/document/d/1jM8FGSJFrHD6BUUNR0yugf_oQzuXL5eWxieyXx6RKFE/edit?usp=sharing)
 
 [Status Report 4](https://docs.google.com/document/d/10vcApA-nsthXDZyVcnm4sM4Jw2uKNgm24BZUGjh203w/edit?usp=sharing)
+
+[Status Report 5](https://docs.google.com/document/d/1ho2TWp78yI1GxXJFdnhrKxg89E9hL0B9QbRrOTpUF5k/edit?usp=sharing)
 
 ### Joshua Clayton
 [Status Report 1](https://docs.google.com/document/d/1ftujLBQQxIUiz9IYKRAmY6KBJx5bP4DsKQIAiCF2ftU/edit?usp=sharing)
@@ -39,6 +47,8 @@
 
 [Status Report 4](https://docs.google.com/document/d/1EaMrPqrqP-Hf16dJpbfzWzQSXmiqsNzGBgNua10Z72o/edit?usp=sharing)
 
+[Status Report 5](https://docs.google.com/document/d/1JwOksEp-BqNgMHvTXnAuiJhvIrWZPN_93Fr-UxLP_5o/edit?usp=sharing)
+
 ### Rachel Goldman
 [Status Report 1]( https://drive.google.com/file/d/1uxOMbGgz4cj4aqvYA2WCooMXsFJbYrSG/view?usp=sharing)
 
@@ -47,6 +57,8 @@
 [Status Report 3](https://docs.google.com/document/d/1Lk1ivtKRkngSfF0txy3f2dYP9ymrUy71VnLSievQLEA/edit?usp=sharing)
 
 [Status Report 4](https://docs.google.com/document/d/1WZV7N3ag1ZVsN0mLnVzhLiQ1bKmpXLF-KbUyMd0UJM4/edit?usp=sharing)
+
+[Status Report 5](https://docs.google.com/document/d/1pLijIQVx3HoJNct6864FiMb6zk3mHXLwHnSn6Nk8URI/edit)
 
 
 ### Jenna Bath
