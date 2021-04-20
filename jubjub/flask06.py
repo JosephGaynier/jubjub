@@ -4,12 +4,13 @@ from flask import request
 from flask import redirect, url_for
 from flask import session
 from flask.templating import render_template_string
-from forms import RegisterForm, LoginForm, searchForm
+from forms import RegisterForm, LoginForm, SearchForm
 from datetime import date
 from database import db
 from models import Event as Event
 from models import User as User
 import bcrypt
+from re import search
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///jubjub.db'
@@ -28,16 +29,6 @@ def index():
     if session.get('user'):
         return render_template("index.html", user=session['user'])
     return render_template('index.html')
-
-
-@app.route('/events')
-def get_events():
-    if session.get('user'):
-        my_events = db.session.query(Event).filter_by(
-            user_id=session['user_id']).all()
-        return render_template('events.html', events=my_events, user=session['user'])
-    else:
-        return redirect(url_for('login'))
 
 
 @app.route('/events/<event_id>')
@@ -109,14 +100,6 @@ def delete_event(event_id):
     else:
         return redirect(url_for('login'))
 
-@app.route('/search', methods=['POST'])
-def register():
-    form = SearchForm()
-    if form.validate_on_submit():
-        searchString = request.form['search']
-        return redirect(url_for('get_events'))
-    return render_template('register.html', form=form)
-
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     form = RegisterForm()
@@ -137,7 +120,6 @@ def register():
         return redirect(url_for('get_events'))
     return render_template('register.html', form=form)
 
-
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     login_form = LoginForm()
@@ -153,6 +135,27 @@ def login():
     else:
         return render_template("login.html", form=login_form)
 
+@app.route('/events', methods=['POST', 'GET'])
+def get_events():
+    if session.get('user'):
+        if request.method == 'POST':
+            search_form = SearchForm()
+            searchText = request.form['search']
+            my_events = db.session.query(Event).filter_by(
+                user_id=session['user_id']).all()
+            
+            events_to_display = []
+            for event in my_events:
+                if search(searchText, event.name):
+                    events_to_display.append(event)
+            return render_template('events.html', events=events_to_display, user=session['user'], form=search_form)
+        else:
+            form = SearchForm()
+            my_events = db.session.query(Event).filter_by(
+                user_id=session['user_id']).all()
+            return render_template('events.html', events=my_events, user=session['user'], form=form)
+    else:
+        return redirect(url_for('login'))
 
 @app.route('/logout')
 def logout():

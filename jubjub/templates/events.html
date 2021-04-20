@@ -33,15 +33,13 @@
        <h1>Event Feed</h1>
        <h1>My Events</h1>
 
-<<<<<<< HEAD
-       <form method="POST" action="/register">
-            <div class="form-field">{{ form.firstname.label }} {{ form.firstname }}</div>
+       <h4><a href="{{ url_for('new_event') }}">New Event</a></h4>
+
+        <form method="POST" action="/events">
+            <div class="form-field">{{ form.search }}</div>
             {{ form.submit }}
         </form>
 
-=======
-       <h4><a href="{{ url_for('new_event') }}">New Event</a></h4>
->>>>>>> a77c9b6470bb14eb81808848f4f57448eed138bc
        <table>
            <tr>
                 <th>Event Name</th>
@@ -68,5 +66,3 @@
        </table>
    </body>
 </html>
-
-
