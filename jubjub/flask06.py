@@ -35,8 +35,7 @@ def index():
 def get_event(event_id):
     if session.get('user'):
         my_event = db.session.query(Event).filter_by(id=event_id).one()
-        form = CommentForm()
-        return render_template('event.html', event=my_event, user=session['user'], form=form)
+        return render_template('event.html', event=my_event, user=session['user'])
     else:
         return redirect(url_for('login'))
 
