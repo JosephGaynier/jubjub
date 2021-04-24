@@ -23,14 +23,6 @@ with app.app_context():
     db.create_all()
 
 
-@app.route('/')
-@app.route('/index')
-def index():
-    if session.get('user'):
-        return render_template("index.html", user=session['user'])
-    return render_template('index.html')
-
-
 @app.route('/events/<event_id>')
 def get_event(event_id):
     if session.get('user'):
@@ -99,6 +91,7 @@ def delete_event(event_id):
     else:
         return redirect(url_for('login'))
 
+
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     form = RegisterForm()
@@ -119,6 +112,7 @@ def register():
         return redirect(url_for('get_events'))
     return render_template('register.html', form=form)
 
+
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     login_form = LoginForm()
@@ -134,6 +128,8 @@ def login():
     else:
         return render_template("login.html", form=login_form)
 
+
+@app.route('/')
 @app.route('/events', methods=['POST', 'GET'])
 def get_events():
     if session.get('user'):
@@ -156,11 +152,13 @@ def get_events():
     else:
         return redirect(url_for('login'))
 
+
 @app.route('/logout')
 def logout():
     if session.get('user'):
         session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('login'))
+
 
 @app.route('/profile')
 def get_profile():
