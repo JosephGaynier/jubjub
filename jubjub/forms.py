@@ -54,7 +54,6 @@ class SearchForm(FlaskForm):
     class Meta:
         csrf = False
 
-    search = StringField('Search', [
-        DataRequired()])
+    search = StringField('Search')
 
     submit = SubmitField('Submit')

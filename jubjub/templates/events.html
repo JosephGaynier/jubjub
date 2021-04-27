@@ -33,9 +33,7 @@
            <h4><a href="{{ url_for('new_event') }}">New Event</a></h4>
 
             <form method="POST" action="/events">
-                <h4>search</h4>
-                <div class="form-field">{{ form.search }}</div>
-                {{ form.submit }}
+                <div class="form-field">Search: {{ form.search }}  {{ form.submit }}</div>
             </form>
 
            <table class="tableFormat">
