@@ -10,23 +10,17 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='forms.css') }}">
     </head>
     <body>
-        <nav>
-            <nav>
-                <a href="{{ url_for('get_events') }}">Dashboard</a> ||<br>
+        <div class="topnav">
+                <a href="{{ url_for('get_events') }}">Dashboard</a> ||
                 <a href="{{ url_for('get_events') }}">Event Requests</a> ||
-                <a>Friends</a> ||<br>
+                <a>Friends</a> ||
                 <a>My Profile</a>
-            </nav>
             {% if user.first_name %}
-                <nav>
                     <a href="{{ url_for('logout') }}">Logout</a>
-                </nav>
             {% else %}
-                <nav>
                     <a href="{{ url_for('login') }}">Sign In</a>
-                </nav>
             {% endif %}
-        </nav>
+        </div>
 
         <h1>Welcome {{ user.first_name }} to the Calendoodle App!</h1>
 
