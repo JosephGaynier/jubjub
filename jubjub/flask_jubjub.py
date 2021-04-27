@@ -5,7 +5,7 @@ from flask import redirect, url_for
 from flask import session
 from flask.templating import render_template_string
 from forms import RegisterForm, LoginForm, SearchForm
-from datetime import date
+from datetime import date, datetime
 from database import db
 from models import Event as Event
 from models import User as User
@@ -44,8 +44,9 @@ def new_event():
                 is_public = True
             else:
                 is_public = False
-            start_date = date.today()
-            end_date = date.today()
+
+            start_date = datetime.strptime(request.form['start_date'], '%m/%d/%y %H:%M:%S')
+            end_date = datetime.strptime(request.form['end_date'], '%m/%d/%y %H:%M:%S')
 
             newEntry = Event(name, start_date, end_date, location, description, color, is_public, session['user_id'])
             db.session.add(newEntry)

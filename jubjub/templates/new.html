@@ -34,13 +34,13 @@
                 <p>  
                     <input type="text" name="name" value="{% if event %}{{event.name}} {% endif %}"/>
                 </p>
-                <p><label>Start Date </label></p>
+                <p><label>Start Date and Time (mm/dd/yy hh:mm:ss) </label></p>
                 <p>
                     <input type="text" name="start_date" value="{% if event %}{{event.start_date}} {% endif %}"/>
                 </p>
-                <p><label>End Date </label></p>
+                <p><label>End Date and Time (mm/dd/yy hh:mm:ss) </label></p>
                 <p>
-                    <input type="text" name="end_date" value="{% if event %}{{event.end_date}} {% endif %}"/>
+                    <input type="text" name="end_date" value="{% if event %}{{event.end_date}}{% endif %}"/>
                 </p>
                 <p><label>Location </label></p>
                 <p>
