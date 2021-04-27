@@ -62,3 +62,7 @@ nav {
   color: black;
 }
 
+.tableFormat{
+  width: 50px;
+  text-align: center;
+}
