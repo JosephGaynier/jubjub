@@ -1,0 +1,72 @@
+<!--Event-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Calendoodle">
+        <title>Calendoodle - New Event</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    </head>
+    <body>
+        <nav>
+            <nav>
+                <a href="{{ url_for('get_events') }}">Dashboard</a> ||
+                <a href="{{ url_for('get_events') }}">Event Requests</a> ||
+                <a>Friends</a> ||
+                <a>My Profile</a> ||
+            </nav>
+            {% if user %}
+                <nav>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </nav>
+            {% else %}
+                <nav>
+                    <a href="{{ url_for('login') }}">Sign In</a>
+                    <a href="{{ url_for('register') }}">Register</a>
+                </nav>
+            {% endif %}
+        </nav>
+
+        <h1>Welcome {{user}} to Calendoodle!</h1>
+        {% if event %}
+            <form action="{{ url_for('update_event', event_id=event.id) }}" method="post">
+        {% else %}
+            <form action="new" method="post">
+        {% endif %}
+                <p><label>Name </label></p>
+                <p>  
+                    <input type="text" name="name" value="{% if event %}{{event.name}} {% endif %}"/>
+                </p>
+                <p><label>Start Date </label></p>
+                <p>
+                    <input type="text" name="start_date" value="{% if event %}{{event.start_date}} {% endif %}"/>
+                </p>
+                <p><label>End Date </label></p>
+                <p>
+                    <input type="text" name="end_date" value="{% if event %}{{event.end_date}} {% endif %}"/>
+                </p>
+                <p><label>Location </label></p>
+                <p>
+                    <input type="text" name="location" value="{% if event %}{{event.location}} {% endif %}"/>
+                </p>
+                <p><label>Description </label></p>
+                <p>
+                    <input type="text" name="description" value="{% if event %}{{event.description}} {% endif %}"/>
+                </p>
+                <p><label>Color </label></p>
+                <p>
+                    <input type="text" name="color" value="{% if event %}{{event.color}} {% endif %}"/>
+                </p>
+
+                <p>
+                    {% if event %}
+                        <input type="submit" value="Update Event"/>
+                    {% else %}
+                        <input type="submit" value="Add Event"/>
+                    {% endif %}
+                </p>
+            </form>
+    </body>
+</html>
