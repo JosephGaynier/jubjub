@@ -33,17 +33,18 @@
            <h4><a href="{{ url_for('new_event') }}">New Event</a></h4>
 
             <form method="POST" action="/events">
+                <h4>search</h4>
                 <div class="form-field">{{ form.search }}</div>
                 {{ form.submit }}
             </form>
 
            <table class="tableFormat">
                <tr>
-                    <th>Event Name</th>
-                    <th>Description</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Location</th>
+                    <th class ="wide">Event Name</th>
+                    <th class ="wide">Description</th>
+                    <th class ="wide">Start Date</th>
+                    <th class ="wide">End Date</th>
+                    <th class ="wide">Location</th>
                 </tr>
                {% for event in events %}
                <tr>

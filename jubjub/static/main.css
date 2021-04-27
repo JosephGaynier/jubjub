@@ -65,10 +65,12 @@ nav {
   color: black;
 }
 
-.tableFormat tr, td{
-  width: 100px;
+.tableFormat{
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  border-color: #4d5060;
+  border: 2px d #4d5060;
+}
+.wide{
+    width: 300px;
+    background-color: white;
+    color: black;
 }
