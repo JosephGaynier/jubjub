@@ -40,11 +40,11 @@ def new_event():
             location = request.form['location']
             description = request.form['description']
             color = request.form['color']
-            invitedUsers = request.form['color']
+            is_public = reques.form['is_public']
             start_date = date.today()
             end_date = date.today()
 
-            newEntry = Event(name, start_date, end_date, location, description, color, invitedUsers, session['user_id'])
+            newEntry = Event(name, start_date, end_date, location, description, color, is_public, session['user_id'])
             db.session.add(newEntry)
             db.session.commit()
             return redirect(url_for('get_events'))

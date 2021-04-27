@@ -36,6 +36,7 @@ class Event(db.Model):
     color = db.Column(db.String(20), nullable=False)
     is_public = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    invitedUsers = db.relationship("RsvpData", backref="event", lazy=True)
 
     def __init__(self, name, start_date, end_date, location, description, color, is_public, user_id):
         self.name = name
@@ -47,3 +48,9 @@ class Event(db.Model):
         self.date_posted = datetime.date.today()
         self.is_public = is_public
         self.user_id = user_id
+
+class RsvpData(db.Model):
+    id = db.Column("id", db.Integer, primary_key=True)
+    first_name = db.Column("first_name", db.String(100))
+    event_id = db.Column(db.Integer, db.ForeignKey("event.id"), nullable=False)
+    
