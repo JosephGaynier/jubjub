@@ -11,7 +11,7 @@
                     <a href="{{ url_for('get_events') }}">Dashboard</a>
                     <a href="{{ url_for('get_events') }}">Event Requests</a>
                     <a>Friends</a>
-                    <a>My Profile</a>
+                    <a  href="{{ url_for('get_profile') }}">My Profile</a>
                 {% if user %}
                         <a href="{{ url_for('logout') }}">Logout</a>
                 {% else %}
