@@ -1,8 +1,11 @@
 body {
   padding: 30px 30px;
+  background: #fbdb5c;
 }
+
 h1 {
   color: black;
+  text-align: center;
 }
 .signin{
   text-align: center;
@@ -25,4 +28,46 @@ nav {
     display: inline;
     float: right;
 }
+.column {
+  float: left;
+  top-margin: 10%;
+  height: 500px;
+}
 
+.left {
+  width:25%;
+}
+.right{
+  width: 75%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #fdeba7;
+  color: black;
+}
+
+.tableFormat tr, td{
+  width: 50px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}

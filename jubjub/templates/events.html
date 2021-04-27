@@ -10,59 +10,58 @@
    </head>
 
    <body>
-       <nav>
-           <nav>
-               <a href="{{ url_for('get_events') }}">Dashboard</a> ||
-               <a href="{{ url_for('get_events') }}">Event Requests</a> ||
-               <a>Friends</a> ||
-               <a>My Profile</a> ||
-           </nav>
+       <div class="topnav">
+               <a href="{{ url_for('get_events') }}">Dashboard</a>
+               <a href="{{ url_for('get_events') }}">Event Requests</a>
+               <a>Friends</a>
+               <a href="{{ url_for('get_profile') }}">My Profile</a>
            {% if user %}
-               <nav>
                    <a href="{{ url_for('logout') }}">Logout</a>
-               </nav>
            {% else %}
-               <nav>
                    <a href="{{ url_for('login') }}">Sign In</a>
-               </nav>
            {% endif %}
-       </nav>
+       </div>
+       <div class="row">
 
        <h1>Welcome {{ user }} to Calendoodle!</h1>
+           <div class="column left">
+             <h2>Event Feed</h2>
+           </div>
+           <div class="column right">
+           <h2>My Events</h2>
 
-       <h1>Event Feed</h1>
-       <h1>My Events</h1>
+           <h4><a href="{{ url_for('new_event') }}">New Event</a></h4>
 
-       <h4><a href="{{ url_for('new_event') }}">New Event</a></h4>
+            <form method="POST" action="/events">
+                <div class="form-field">{{ form.search }}</div>
+                {{ form.submit }}
+            </form>
 
-        <form method="POST" action="/events">
-            <div class="form-field">{{ form.search }}</div>
-            {{ form.submit }}
-        </form>
-
-       <table>
-           <tr>
-                <th>Event Name</th>
-                <th>Description</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Location</th>
-            </tr>
-           {% for event in events %}
-           <tr>
-               <td><a href="{{ url_for('get_event', event_id=event.id) }}">{{ event.name }}</a></td>
-               <td>{{ event.description }}</td>
-                <td>{{ event.start_date }}</td>
-                <td>{{ event.end_date }}</td>
-                <td>{{ event.location }}</td>
-               <td><a href="{{ url_for('update_event', event_id=event.id) }}">Edit</a></td>
-               <td>
-                   <form action="{{ url_for('delete_event', event_id=event.id) }}" method="post">
-                       <input type="submit" value="Delete"/>
-                   </form>
-               </td>
-           </tr>
-           {% endfor %}
-       </table>
+           <table class="tableFormat">
+               <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Location</th>
+                </tr>
+               {% for event in events %}
+               <tr>
+                   <td><a href="{{ url_for('get_event', event_id=event.id) }}">{{ event.name }}</a></td>
+                   <td>{{ event.description }}</td>
+                    <td>{{ event.start_date }}</td>
+                    <td>{{ event.end_date }}</td>
+                    <td>{{ event.location }}</td>
+                   <td><a href="{{ url_for('update_event', event_id=event.id) }}">Edit</a></td>
+                   <td>
+                       <form action="{{ url_for('delete_event', event_id=event.id) }}" method="post">
+                           <input type="submit" value="Delete"/>
+                       </form>
+                   </td>
+               </tr>
+               {% endfor %}
+           </table>
+               </div>
+       </div>
    </body>
 </html>
