@@ -1,13 +1,6 @@
 import datetime
 from database import db
 
-Base = db.declarative_base()
-
-event_user = db.Table('event_user', Base.metadata,
-    db.Column('event_id', db.Integer, db.ForeignKey('event.id')),
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id'))
-)
-
 class User(db.Model):
     id = db.Column("id", db.Integer, primary_key=True)
     first_name = db.Column("first_name", db.String(100))
