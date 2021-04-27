@@ -65,4 +65,9 @@ nav {
 .tableFormat tr, td{
   width: 50px;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+h1{
+  text-align: center;
 }
