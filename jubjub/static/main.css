@@ -66,8 +66,11 @@ nav {
 }
 
 .tableFormat{
-  width: 300px;
   text-align: center;
-  border: 2px solid #4d5060;
-
+  border: 2px d #4d5060;
+}
+.wide{
+    width: 300px;
+    background-color: white;
+    color: black;
 }
