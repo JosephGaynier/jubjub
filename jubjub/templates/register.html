@@ -8,14 +8,14 @@
 </head>
     <body>
         <div class="navdiv">
-                    <a href="{{ url_for('get_events') }}">Dashboard</a> ||
-                    <a href="{{ url_for('get_events') }}">Event Requests</a> ||
-                    <a>Friends</a> ||
-                    <a>My Profile</a> ||
+                    <a href="{{ url_for('get_events') }}">Dashboard</a>
+                    <a href="{{ url_for('get_events') }}">Event Requests</a>
+                    <a>Friends</a>
+                    <a>My Profile</a>
                 {% if user %}
-                        <a href="{{ url_for('logout') }}">Logout || </a>
+                        <a href="{{ url_for('logout') }}">Logout</a>
                 {% else %}
-                        <a href="{{ url_for('login') }}"> Sign In || </a>
+                        <a href="{{ url_for('login') }}"> Sign In</a>
                 {% endif %}
 
         </div>

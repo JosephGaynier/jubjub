@@ -11,9 +11,9 @@
     </head>
     <body>
         <div class="topnav">
-                <a href="{{ url_for('get_events') }}">Dashboard</a> ||
-                <a href="{{ url_for('get_events') }}">Event Requests</a> ||
-                <a>Friends</a> ||
+                <a href="{{ url_for('get_events') }}">Dashboard</a>
+                <a href="{{ url_for('get_events') }}">Event Requests</a>
+                <a>Friends</a>
                 <a>My Profile</a>
             {% if user.first_name %}
                     <a href="{{ url_for('logout') }}">Logout</a>
