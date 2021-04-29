@@ -3,6 +3,7 @@ from flask import Flask, render_template
 from flask import request
 from flask import redirect, url_for
 from flask import session
+from flask_sqlalchemy import SQLAlchemy
 from flask.templating import render_template_string
 from forms import RegisterForm, LoginForm, SearchForm
 from datetime import date
@@ -22,7 +23,6 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-
 @app.route('/events/<event_id>')
 def get_event(event_id):
     if session.get('user'):
@@ -40,10 +40,7 @@ def new_event():
             location = request.form['location']
             description = request.form['description']
             color = request.form['color']
-            if 'is_public' in request.form:
-                is_public = True
-            else:
-                is_public = False
+            is_public = reques.form['is_public']
             start_date = date.today()
             end_date = date.today()
 
@@ -66,10 +63,6 @@ def update_event(event_id):
             event.location = request.form['location']
             event.description = request.form['description']
             event.color = request.form['color']
-            if 'is_public' in request.form:
-                event.is_public = True
-            else:
-                event.is_public = False
             event.start_date = date.today()
             event.end_date = date.today()
             db.session.commit()
@@ -80,6 +73,18 @@ def update_event(event_id):
     else:
         return redirect(url_for('login'))
 
+def inviteUser(event_id, userFName, userLName):
+    if session.get('user'):
+        if request.method == 'POST':
+            event = db.session.query(User).filter_by(first_name=userFName, last_name=userLName).one()
+            event.invitedUsers = request.form['invitedUsers']
+            db.session.commit()
+            return redirect(url_for('get_events'))
+        else:
+            event = db.session.query(User).filter_by(first_name=userFName, last_name=userLName).one()
+            return render_template('new.html', event=my_event, user=session['user'])
+    else:
+        return redirect(url_for('login'))
 
 @app.route('/events/delete/<event_id>', methods=['POST'])
 def delete_event(event_id):
@@ -128,6 +133,28 @@ def login():
     else:
         return render_template("login.html", form=login_form)
 
+@app.route('/RSVP', methods=['POST', 'GET'])
+def get_rsvp():
+    if session.get('user'):
+        if request.method == 'POST':
+            search_form = SearchForm()
+            searchText = request.form['search']
+            my_events = db.session.query(Event).filter_by(
+                invitedUsers=user.first_name).all()
+
+            events_to_display = []
+            for event in my_events:
+                if search(searchText, event.name):
+                    events_to_display.append(event)
+            return render_template('events.html', events=events_to_display, user=session['user'], form=search_form)
+        else:
+            form = SearchForm()
+            my_events = db.session.query(Event).filter_by(
+                invitedUsers=user.first_name).all()
+            return render_template('events.html', events=my_events, user=session['user'], form=form)
+    else:
+        return redirect(url_for('login'))
+
 
 @app.route('/')
 @app.route('/events', methods=['POST', 'GET'])
@@ -158,7 +185,6 @@ def logout():
     if session.get('user'):
         session.clear()
     return redirect(url_for('login'))
-
 
 @app.route('/profile')
 def get_profile():

@@ -58,3 +58,7 @@ class SearchForm(FlaskForm):
         DataRequired()])
 
     submit = SubmitField('Submit')
+
+class RSVPForm(FlaskForm):
+    class Meta:
+        csrf: False
