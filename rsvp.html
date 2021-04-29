@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="UNCC Notes App">
+        <title>Events you're invited to:</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='forms.css') }}">
+    </head>
+    <body>
+        <nav>
+            <nav>
+                <a href="{{ url_for('get_events') }}">Dashboard</a>
+            </nav>
+            {% if user.first_name %}
+                <nav>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </nav>
+            {% else %}
+                <nav>
+                    <a href="{{ url_for('login') }}">Sign In</a>
+                </nav>
+            {% endif %}
+        </nav>
+
+        <h1>Welcome {{ user.first_name }} to the Calendoodle App!</h1>
+
+        <h1>Profile details</h1>
+
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+        </table>
+    </body>
+</html>
