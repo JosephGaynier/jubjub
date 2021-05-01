@@ -27,17 +27,15 @@ Feature: Accepting Invite
       And they have been added as a guest to another user’s event
     Then the user is given a notification that prompts the user to accept the invite
     When the user accepts the invite
-    Then the event appears on their calendar and list
+    Then the event appears on their event list
 
-    
     
 Feature: Displaying Event Feed
 
   Scenario: User wants to view events
-    Given user is logged in
-      And user is on home page
+    Given the user is logged in
+      And the user is on home page
     Then the bottom left corner displays the public events
-      And the bottom left corner displays events they have been invited to
       And the user can scroll through events
     When user selects “Sort by: most recent”
     Then the events are displayed in order of date with the most recent at the top
@@ -46,12 +44,10 @@ Feature: Displaying Event Feed
 	
   
 Feature: Search by Name
+
   Scenario: User wants to find an event by searching for its name
     Given user is logged in
       And user is on home page
       And the user has selected the search bar
-      And the user has entered in a name of an event or part of a name
-    Then a drop down should pop up under the search bar and show any matching events
-      And if there are no matching options it should tell the user so
-    When the user clicks on an option, the calendar should highlight the event day 
-    Then the drop down should disappear 
+    When the user enters in a name of an event or part of a name
+    Then any matching events should display below
