@@ -54,6 +54,8 @@
 
 [Status Report 5](https://docs.google.com/document/d/1JwOksEp-BqNgMHvTXnAuiJhvIrWZPN_93Fr-UxLP_5o/edit?usp=sharing)
 
+[Status Report 6](https://docs.google.com/document/d/1le4X0w7xkPgYWcId-miEQlqBS8rFhpW68GfiiPhKrGA/edit?usp=sharing)
+
 ### Rachel Goldman
 [Status Report 1]( https://drive.google.com/file/d/1uxOMbGgz4cj4aqvYA2WCooMXsFJbYrSG/view?usp=sharing)
 
