@@ -79,3 +79,11 @@ nav {
     height: 50px;
     float: left;
 }
+
+.profileTable{
+    margin-left:auto;
+    margin-right:auto;
+    color: green;
+    text-align: center;
+    width: 600px;
+}
