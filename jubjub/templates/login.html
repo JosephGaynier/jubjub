@@ -9,6 +9,7 @@
 </head>
     <body>
             <div class="topnav">
+                <img class = "navImg" src="{{url_for('static', filename='logo.png')}}" alt="calendoodle"/>
                 <a href="{{ url_for('get_events') }}">Dashboard</a>
             {% if user %}
                     <a href="{{ url_for('logout') }}">Logout</a>
