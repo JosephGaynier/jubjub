@@ -7,18 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='forms.css') }}">
 </head>
     <body>
-        <div class="navdiv">
-                    <img class = "navImg" src="{{url_for('static', filename='logo.png')}}" alt="calendoodle"/>
-                    <a href="{{ url_for('get_events') }}">Dashboard</a>
-                    <a href="{{ url_for('get_events') }}">Event Requests</a>
-                    <a href="{{ url_for('get_profile') }}">My Profile</a>
-                {% if user %}
-                        <a href="{{ url_for('logout') }}">Logout</a>
-                {% else %}
-                        <a href="{{ url_for('login') }}"> Sign In</a>
-                {% endif %}
-
-        </div>
+        <div class="topnav">
+                <img class = "navImg" src="{{url_for('static', filename='logo.png')}}" alt="calendoodle"/>
+                <a href="{{ url_for('get_events') }}">Dashboard</a>
+            {% if user %}
+                    <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                    <a href="{{ url_for('login') }}">Sign In</a>
+            </div>
+            {% endif %}
         <h1>Welcome {% if user %}{{user}}{% endif %}to the Calendoodle App! </h1>
 
         <h2>Use this site to organize and RSVP to events.</h2>
