@@ -68,6 +68,8 @@ nav {
 .tableFormat{
   text-align: center;
   border: 2px d #4d5060;
+  font-size: 24px;
+
 }
 .wide{
     width: 300px;
@@ -85,5 +87,6 @@ nav {
     margin-right:auto;
     color: green;
     text-align: center;
-    width: 600px;
+    width: 960px;
+    font-size: 26px;
 }
