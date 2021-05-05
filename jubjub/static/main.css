@@ -68,9 +68,25 @@ nav {
 .tableFormat{
   text-align: center;
   border: 2px d #4d5060;
+  font-size: 24px;
+
 }
 .wide{
     width: 300px;
     background-color: white;
     color: black;
+}
+.navImg{
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+.profileTable{
+    margin-left:auto;
+    margin-right:auto;
+    color: green;
+    text-align: center;
+    width: 960px;
+    font-size: 26px;
 }

@@ -11,9 +11,9 @@
     </head>
     <body>
         <div class="topnav">
+                <img class = "navImg" src="{{url_for('static', filename='logo.png')}}" alt="calendoodle"/>
                 <a href="{{ url_for('get_events') }}">Dashboard</a>
                 <a href="{{ url_for('get_events') }}">Event Requests</a>
-                <a>Friends</a>
                 <a href="{{ url_for('get_profile') }}">My Profile</a>
             {% if user.first_name %}
                     <a href="{{ url_for('logout') }}">Logout</a>
@@ -26,7 +26,7 @@
 
         <h1>Profile details</h1>
 
-        <table>
+        <table class="profileTable">
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
