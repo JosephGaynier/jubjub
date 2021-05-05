@@ -45,7 +45,7 @@
                     <th class ="wide">Location</th>
                 </tr>
                {% for event in events %}
-               <tr>
+               <tr bgcolor= {{event.color}}>
                    <td><a href="{{ url_for('get_event', event_id=event.id) }}">{{ event.name }}</a></td>
                    <td>{{ event.description }}</td>
                     <td>{{ event.start_date }}</td>
