@@ -1,12 +1,6 @@
 import datetime
 from database import db
 
-#Base = db.declarative_base()
-
-#event_user = db.Table('event_user', Base.metadata,
-#    db.Column('event_id', db.Integer, db.ForeignKey('event.id')),
-#    db.Column('user_id', db.Integer, db.ForeignKey('user.id'))
-#)
 
 class User(db.Model):
     id = db.Column("id", db.Integer, primary_key=True)
@@ -36,7 +30,6 @@ class Event(db.Model):
     color = db.Column(db.String(20), nullable=False)
     is_public = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    invitedUsers = db.relationship("RsvpData", backref="event", lazy=True)
 
     def __init__(self, name, start_date, end_date, location, description, color, is_public, user_id):
         self.name = name
@@ -50,7 +43,12 @@ class Event(db.Model):
         self.user_id = user_id
 
 class RsvpData(db.Model):
-    id = db.Column("id", db.Integer, primary_key=True)
-    first_name = db.Column("first_name", db.String(100))
+    id = db.Column(db.Integer, primary_key=True)
     event_id = db.Column(db.Integer, db.ForeignKey("event.id"), nullable=False)
-    
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    user= db.relationship("User", lazy=True)
+    event= db.relationship("Event", lazy=True)
+
+    def __init__(self, event_id, user_id):
+        self.event_id = event_id
+        self.user_id = user_id

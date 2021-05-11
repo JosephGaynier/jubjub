@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="UNCC Notes App">
+        <title>Calendoodle - View your Event</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='forms.css') }}">
+    </head>
+    <body>
+        <div class="topnav">
+                <img class = "navImg" src="{{url_for('static', filename='logo.png')}}" alt="calendoodle"/>
+                <a href="{{ url_for('get_events') }}">Dashboard</a>
+                <a href="{{ url_for('get_events') }}">Event Requests</a>
+                <a href="{{ url_for('get_profile') }}">My Profile</a>
+            {% if user %}
+                    <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                    <a href="{{ url_for('login') }}">Sign In</a>
+            {% endif %}
+        </div>
+
+        <h1>Welcome {{ user }} to the Calendoodle App!</h1>
+        
+        <h1>Event details</h1>
+
+        <table class="profileTable">
+            <tr>
+                <th>Event Name</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td>{{ event.name }}</td>
+                <td>{{ event.description }}</td>
+                <td>{{ event.start_date }}</td>
+                <td>{{ event.end_date }}</td>
+                <td>{{ event.location }}</td>
+            </tr>
+        </table>
+    </body>
+</html>
