@@ -9,6 +9,7 @@ from datetime import date, datetime
 from database import db
 from models import Event as Event
 from models import User as User
+from models import RsvpData as RsvpData
 import bcrypt
 from re import search
 
@@ -49,7 +50,9 @@ def new_event():
             end_date = datetime.strptime(request.form['end_date'], '%m/%d/%y %H:%M:%S')
 
             newEntry = Event(name, start_date, end_date, location, description, color, is_public, session['user_id'])
+            newRSVPEntry = RsvpData(newEntry.id, session['user_id'])
             db.session.add(newEntry)
+            db.session.add(newRSVPEntry)
             db.session.commit()
             return redirect(url_for('get_events'))
         else:
@@ -92,6 +95,40 @@ def delete_event(event_id):
     else:
         return redirect(url_for('login'))
 
+@app.route('/events/invite/<event_id>', methods=['POST'])
+def invite_user(event_id):
+    if session.get('user'):
+        my_event = db.session.query(Event).filter_by(id=event_id).one()
+        db.session.delete(my_event)
+        db.session.commit()
+        return redirect(url_for('get_events'))
+    else:
+        return redirect(url_for('login'))
+
+def accept_invite(event_id):
+    if session.get('user'):
+        if request.method == 'POST':
+            event = db.session.query(Event).filter_by(id=event_id).one()
+            name = request.form['name']
+            location = request.form['location']
+            description = request.form['description']
+            color = request.form['color']
+            if 'is_public' in request.form:
+                is_public = True
+            else:
+                is_public = False
+
+            start_date = datetime.strptime(request.form['start_date'], '%m/%d/%y %H:%M:%S')
+            end_date = datetime.strptime(request.form['end_date'], '%m/%d/%y %H:%M:%S')
+
+            newEntry = Event(name, start_date, end_date, location, description, color, is_public, session['user_id'])
+            db.session.add(newEntry)
+            db.session.commit()
+            return redirect(url_for('get_events'))
+        else:
+            return render_template('new.html', user=session['user'])
+    else:
+        return redirect(url_for('login'))
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -142,7 +179,7 @@ def get_events():
             
             events_to_display = []
             for event in my_events:
-                if search(searchText, event.name):
+                if search(searchText.lower(), event.name.lower()):
                     events_to_display.append(event)
             return render_template('events.html', events=events_to_display, user=session['user'], form=search_form)
         else:
@@ -153,6 +190,27 @@ def get_events():
     else:
         return redirect(url_for('login'))
 
+@app.route('/event_requests', methods=['POST', 'GET'])
+def get_event_requests():
+    if session.get('user'):
+        if request.method == 'POST':
+            search_form = SearchForm()
+            searchText = request.form['search']
+            my_events = db.session.query(Event).filter_by(
+                user_id=session['user_id']).all()
+            
+            events_to_display = []
+            for event in my_events:
+                if search(searchText, event.name):
+                    events_to_display.append(event)
+            return render_template('eventRequests.html', events=events_to_display, user=session['user'], form=search_form)
+        else:
+            form = SearchForm()
+            my_events = db.session.query(Event).filter_by(
+                user_id=session['user_id']).all()
+            return render_template('eventRequests.html', events=my_events, user=session['user'], form=form)
+    else:
+        return redirect(url_for('login'))
 
 @app.route('/logout')
 def logout():

@@ -41,3 +41,14 @@ class Event(db.Model):
         self.date_posted = datetime.date.today()
         self.is_public = is_public
         self.user_id = user_id
+
+class RsvpData(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    event_id = db.Column(db.Integer, db.ForeignKey("event.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    user= db.relationship("User", lazy=True)
+    event= db.relationship("Event", lazy=True)
+
+    def __init__(self, event_id, user_id):
+        self.event_id = event_id
+        self.user_id = user_id
