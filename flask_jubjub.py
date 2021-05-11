@@ -179,7 +179,7 @@ def get_events():
             
             events_to_display = []
             for event in my_events:
-                if search(searchText, event.name):
+                if search(searchText.lower(), event.name.lower()):
                     events_to_display.append(event)
             return render_template('events.html', events=events_to_display, user=session['user'], form=search_form)
         else:
