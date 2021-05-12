@@ -8,11 +8,12 @@
     ],
     "python.testing.pytestEnabled": false,
     "python.testing.nosetestsEnabled": false,
-    "python.testing.unittestEnabled": true,
+    "python.testing.unittestEnabled": false,
     "cSpell.words": [
         "bcrypt",
         "firstname",
         "getenv",
         "hashpw"
-    ]
+    ],
+    "python.testing.promptToConfigure": false
 }

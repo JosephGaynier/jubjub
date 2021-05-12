@@ -24,16 +24,13 @@
        <div class="row">
 
        <h1>Welcome {{ user }} to Calendoodle!</h1>
-           <div class="column left">
-             <h2>Event Feed</h2>
-           </div>
            <div class="column right">
            <h2>My Events</h2>
 
            <h4><a href="{{ url_for('new_event') }}">New Event</a></h4>
 
-            <form method="POST" action="/events">
-                <div class="form-field">Search: {{ form.search }}  {{ form.submit }}</div>
+            <form method="POST" action="{{ url_for('get_event_requests') }}">
+                <div class="form-field">Search: {{ search_form.search }}  {{ search_form.submit }}</div>
             </form>
 
            <table class="tableFormat">
@@ -56,14 +53,17 @@
                        <form action="{{ url_for('delete_event', event_id=event.id) }}" method="post">
                            <input type="submit" value="Delete"/>
                        </form>
-                       <form action="{{ url_for('invite_user', event_id=event.id) }}" method="post">
-                        <input type="submit" value="Invite Users"/>
+                       <form action="{{ url_for('invite_user', event_id=event.id) }}" method="Post">
+                            <div class="form-field">Invite Users: {{ invite_form.username }}  {{ invite_form.invite }}</div>
                         </form>
                    </td>
                </tr>
                {% endfor %}
            </table>
-               </div>
+            </div>
+            <div class="column left">
+            <h2>Event Feed</h2>
+        </div>
        </div>
    </body>
 </html>

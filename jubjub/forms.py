@@ -50,10 +50,27 @@ class LoginForm(FlaskForm):
         if db.session.query(User).filter_by(email=field.data).count() == 0:
             raise ValidationError('Incorrect username or password.')
 
+
 class SearchForm(FlaskForm):
     class Meta:
         csrf = False
-
     search = StringField('Search')
-
     submit = SubmitField('Submit')
+
+
+class InviteForm(FlaskForm):
+    class Meta:
+        csrf = False
+    username = StringField('Username')
+    invite = SubmitField('Invite')
+
+
+class AcceptForm(FlaskForm):
+    class Meta:
+        csrf = False
+    accept = SubmitField('Accept')
+
+class DeclineForm(FlaskForm):
+    class Meta:
+        csrf = False
+    decline = SubmitField('Decline')

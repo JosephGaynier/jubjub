@@ -4,7 +4,7 @@ from flask import request
 from flask import redirect, url_for
 from flask import session
 from flask.templating import render_template_string
-from forms import RegisterForm, LoginForm, SearchForm
+from forms import DeclineForm, AcceptForm, RegisterForm, LoginForm, SearchForm, InviteForm
 from datetime import date, datetime
 from database import db
 from models import Event as Event
@@ -90,6 +90,9 @@ def delete_event(event_id):
     if session.get('user'):
         my_event = db.session.query(Event).filter_by(id=event_id).one()
         db.session.delete(my_event)
+        rsvp_data = db.session.query(RsvpData).filter_by(event_id=event_id).all()
+        for data in rsvp_data:
+            db.session.delete(data)
         db.session.commit()
         return redirect(url_for('get_events'))
     else:
@@ -98,9 +101,14 @@ def delete_event(event_id):
 @app.route('/events/invite/<event_id>', methods=['POST'])
 def invite_user(event_id):
     if session.get('user'):
-        my_event = db.session.query(Event).filter_by(id=event_id).one()
-        db.session.delete(my_event)
-        db.session.commit()
+        username = request.form['username']
+        if username != '':
+            try:
+                user = db.session.query(User).filter_by(first_name=username).one()
+                db.session.add(RsvpData(event_id, user.id))
+                db.session.commit()
+            except:
+                filler = 'filler'
         return redirect(url_for('get_events'))
     else:
         return redirect(url_for('login'))
@@ -172,7 +180,9 @@ def login():
 def get_events():
     if session.get('user'):
         if request.method == 'POST':
+            invite_form = InviteForm()
             search_form = SearchForm()
+
             searchText = request.form['search']
             my_events = db.session.query(Event).filter_by(
                 user_id=session['user_id']).all()
@@ -181,12 +191,13 @@ def get_events():
             for event in my_events:
                 if search(searchText.lower(), event.name.lower()):
                     events_to_display.append(event)
-            return render_template('events.html', events=events_to_display, user=session['user'], form=search_form)
+            return render_template('events.html', events=events_to_display, user=session['user'], search_form=search_form, invite_form=invite_form)
         else:
-            form = SearchForm()
+            invite_form = InviteForm()
+            search_form = SearchForm()
             my_events = db.session.query(Event).filter_by(
                 user_id=session['user_id']).all()
-            return render_template('events.html', events=my_events, user=session['user'], form=form)
+            return render_template('events.html', events=my_events, user=session['user'], search_form=search_form, invite_form=invite_form)
     else:
         return redirect(url_for('login'))
 
@@ -195,20 +206,62 @@ def get_event_requests():
     if session.get('user'):
         if request.method == 'POST':
             search_form = SearchForm()
+            accept_form = AcceptForm()
+            decline_form = DeclineForm()
             searchText = request.form['search']
-            my_events = db.session.query(Event).filter_by(
-                user_id=session['user_id']).all()
             
+            rsvp_data = db.session.query(RsvpData).filter_by(
+                username=session['user']).all()
+            event_requests = []
+            for data in rsvp_data:
+                print(data.event_id)
+                print(data.username)
+                event = db.session.query(Event).filter_by(
+                    event_id=data.event_id).one()
+                event_requests.append(event)
+
             events_to_display = []
-            for event in my_events:
+            for event in event_requests:
                 if search(searchText, event.name):
                     events_to_display.append(event)
-            return render_template('eventRequests.html', events=events_to_display, user=session['user'], form=search_form)
+            return render_template('eventRequests.html', events=events_to_display, user=session['user'], search_form=search_form, accept_form=accept_form, decline_form=decline_form)
         else:
-            form = SearchForm()
-            my_events = db.session.query(Event).filter_by(
+            search_form = SearchForm()
+            accept_form = AcceptForm()
+            decline_form = DeclineForm()
+            event_requests = []
+
+            rsvp_data = db.session.query(RsvpData).filter_by(
                 user_id=session['user_id']).all()
-            return render_template('eventRequests.html', events=my_events, user=session['user'], form=form)
+
+            for data in rsvp_data:
+                event = db.session.query(Event).filter_by(
+                    id=data.event_id).one()
+                event_requests.append(event)
+            return render_template('eventRequests.html', events=event_requests  , user=session['user'], search_form=search_form, accept_form=accept_form, decline_form=decline_form)
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/event_requests/accept /<event_id>', methods=['POST'])
+def accept_invite(event_id):
+    if session.get('user'):
+        old_event = db.session.query(Event).filter_by(id=event_id).one()
+        new_event = Event(old_event.name, old_event.start_date, old_event.end_date, old_event.location, old_event.description, old_event.color, old_event.is_public, session['user_id'])
+        db.session.add(new_event)
+        rsvp_data = db.session.query(RsvpData).filter_by(event_id=event_id).filter_by(user_id=session['user_id']).one()
+        db.session.delete(rsvp_data)
+        db.session.commit()
+        return redirect(url_for('get_events'))
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/event_requests/decline/<event_id>', methods=['POST'])
+def decline_invite(event_id):
+    if session.get('user'):
+        rsvp_data = db.session.query(RsvpData).filter_by(event_id=event_id).filter_by(user_id=session['user_id']).one()
+        db.session.delete(rsvp_data)
+        db.session.commit()
+        return redirect(url_for('get_events'))
     else:
         return redirect(url_for('login'))
 

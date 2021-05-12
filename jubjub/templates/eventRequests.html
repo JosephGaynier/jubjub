@@ -24,14 +24,12 @@
        <div class="row">
 
        <h1>Here are the events you've been invited to:</h1>
-           <div class="column left">
-             <h2>Event Feed</h2>
-           </div>
+           
            <div class="column right">
            <h2>Shared Events</h2>
 
             <form method="POST" action="/events">
-                <div class="form-field">Search: {{ form.search }}  {{ form.submit }}</div>
+                <div class="form-field">Search: {{ search_form.search }}  {{ search_form.submit }}</div>
             </form>
 
            <table class="tableFormat">
@@ -51,17 +49,20 @@
                     <td>{{ event.location }}</td>
                    <td><a href="{{ url_for('update_event', event_id=event.id) }}">Edit</a></td>
                    <td>
-                       <form action="{{ url_for('invite_user', event_id=event.id) }}" method="post">
-                           <input type="submit" value="Accept"/>
+                       <form action="{{ url_for('accept_invite', event_id=event.id) }}" method="post">
+                            <div class="form-field">{{ accept_form.accept }}</div>
                        </form>
-                       <form action="{{ url_for('delete_event', event_id=event.id) }}" method="post">
-                        <input type="submit" value="Decline"/>
+                       <form action="{{ url_for('decline_invite', event_id=event.id) }}" method="post">
+                            <div class="form-field">{{ decline_form.decline }}</div>
                        </form>
                    </td>
                </tr>
                {% endfor %}
            </table>
-               </div>
+            </div>
+            <div class="column left">
+             <h2>Event Feed</h2>
+           </div>
        </div>
    </body>
 </html>
