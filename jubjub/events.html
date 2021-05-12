@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <meta name="description" content="Calendoodle">
+       <title>Calendoodle - Event List</title>
+       <!-- styles -->
+       <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+   </head>
+
+   <body>
+       <div class="topnav">
+               <img class = "navImg" src="{{url_for('static', filename='logo.png')}}" alt="calendoodle"/>
+            {% if user %}
+                   <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                   <a href="{{ url_for('login') }}">Sign In</a>
+            {% endif %}
+               <a href="{{ url_for('get_profile') }}">My Profile</a>
+               <a href="{{ url_for('get_event_requests') }}">Event Requests</a>
+               <a href="{{ url_for('get_events') }}">Dashboard</a>
+       </div>
+       <div class="row">
+
+       <h1>Welcome {{ user }} to Calendoodle!</h1>
+           
+           <div class="column right">
+           <h2>My Events</h2>
+
+           <h4><a href="{{ url_for('new_event') }}">New Event</a></h4>
+
+            <form method="POST" action="/events">
+                <div class="form-field">Search: {{ form.search }}  {{ form.submit }}</div>
+            </form>
+
+           <table class="tableFormat">
+               <tr>
+                    <th class ="wide">Event Name</th>
+                    <th class ="wide">Description</th>
+                    <th class ="wide">Start Date</th>
+                    <th class ="wide">End Date</th>
+                    <th class ="wide">Location</th>
+                </tr>
+               {% for event in events %}
+               <tr bgcolor= {{event.color}}>
+                   <td><a href="{{ url_for('get_event', event_id=event.id) }}">{{ event.name }}</a></td>
+                   <td>{{ event.description }}</td>
+                    <td>{{ event.start_date }}</td>
+                    <td>{{ event.end_date }}</td>
+                    <td>{{ event.location }}</td>
+                   <td><a href="{{ url_for('update_event', event_id=event.id) }}">Edit</a></td>
+                   <td>
+                       <form action="{{ url_for('delete_event', event_id=event.id) }}" method="post">
+                           <input type="submit" value="Delete"/>
+                       </form>
+                       <form action="{{ url_for('invite_user', event_id=event.id) }}" method="post">
+                        <input type="submit" value="Invite Users"/>
+                        </form>
+                   </td>
+               </tr>
+               {% endfor %}
+           </table>
+               </div>
+               <div class="column left">
+                <h2>Event Feed</h2>
+              </div>
+       </div>
+   </body>
+</html>
