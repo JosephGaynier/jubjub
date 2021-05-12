@@ -50,9 +50,9 @@ def new_event():
             end_date = datetime.strptime(request.form['end_date'], '%m/%d/%y %H:%M:%S')
 
             newEntry = Event(name, start_date, end_date, location, description, color, is_public, session['user_id'])
-            newRSVPEntry = RsvpData(newEntry.id, session['user_id'])
+            #newRSVPEntry = RsvpData(newEntry.id, session['user_id'])
             db.session.add(newEntry)
-            db.session.add(newRSVPEntry)
+            #db.session.add(newRSVPEntry)
             db.session.commit()
             return redirect(url_for('get_events'))
         else:
