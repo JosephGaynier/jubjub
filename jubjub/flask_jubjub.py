@@ -32,7 +32,6 @@ def get_event(event_id):
     else:
         return redirect(url_for('login'))
 
-
 @app.route('/events/new', methods=['GET', 'POST'])
 def new_event():
     if session.get('user'):
@@ -186,18 +185,30 @@ def get_events():
             searchText = request.form['search']
             my_events = db.session.query(Event).filter_by(
                 user_id=session['user_id']).all()
+            all_events = db.session.query(Event).filter_by().all()
             
             events_to_display = []
             for event in my_events:
                 if search(searchText.lower(), event.name.lower()):
                     events_to_display.append(event)
-            return render_template('events.html', events=events_to_display, user=session['user'], search_form=search_form, invite_form=invite_form)
+            public_feed = []
+            for event in all_events:
+                if event.is_public == True:
+                    public_feed.append(event)
+            return render_template('events.html', events=events_to_display, feed_events=public_feed, user=session['user'], search_form=search_form, invite_form=invite_form)
         else:
             invite_form = InviteForm()
             search_form = SearchForm()
             my_events = db.session.query(Event).filter_by(
                 user_id=session['user_id']).all()
-            return render_template('events.html', events=my_events, user=session['user'], search_form=search_form, invite_form=invite_form)
+            all_events = db.session.query(Event).filter_by().all()
+
+            public_feed = []
+            for event in all_events:
+                if event.is_public == True:
+                    public_feed.append(event)
+
+            return render_template('events.html', events=my_events, feed_events=public_feed, user=session['user'], search_form=search_form, invite_form=invite_form)
     else:
         return redirect(url_for('login'))
 
@@ -205,13 +216,12 @@ def get_events():
 def get_event_requests():
     if session.get('user'):
         if request.method == 'POST':
-            search_form = SearchForm()
             accept_form = AcceptForm()
             decline_form = DeclineForm()
-            searchText = request.form['search']
             
             rsvp_data = db.session.query(RsvpData).filter_by(
-                username=session['user']).all()
+                user_id=session['user']).all()
+                
             event_requests = []
             for data in rsvp_data:
                 print(data.event_id)
@@ -222,11 +232,9 @@ def get_event_requests():
 
             events_to_display = []
             for event in event_requests:
-                if search(searchText, event.name):
-                    events_to_display.append(event)
-            return render_template('eventRequests.html', events=events_to_display, user=session['user'], search_form=search_form, accept_form=accept_form, decline_form=decline_form)
+                events_to_display.append(event)
+            return render_template('eventRequests.html', events=events_to_display, user=session['user'], accept_form=accept_form, decline_form=decline_form)
         else:
-            search_form = SearchForm()
             accept_form = AcceptForm()
             decline_form = DeclineForm()
             event_requests = []
@@ -238,7 +246,7 @@ def get_event_requests():
                 event = db.session.query(Event).filter_by(
                     id=data.event_id).one()
                 event_requests.append(event)
-            return render_template('eventRequests.html', events=event_requests  , user=session['user'], search_form=search_form, accept_form=accept_form, decline_form=decline_form)
+            return render_template('eventRequests.html', events=event_requests  , user=session['user'], accept_form=accept_form, decline_form=decline_form)
     else:
         return redirect(url_for('login'))
 
