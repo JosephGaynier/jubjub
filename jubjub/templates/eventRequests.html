@@ -28,10 +28,6 @@
            <div class="column right">
            <h2>Shared Events</h2>
 
-            <form method="POST" action="/events">
-                <div class="form-field">Search: {{ search_form.search }}  {{ search_form.submit }}</div>
-            </form>
-
            <table class="tableFormat">
                <tr>
                     <th class ="wide">Event Name</th>
@@ -60,9 +56,6 @@
                {% endfor %}
            </table>
             </div>
-            <div class="column left">
-             <h2>Event Feed</h2>
-           </div>
        </div>
    </body>
 </html>

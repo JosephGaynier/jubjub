@@ -29,7 +29,7 @@
 
            <h4><a href="{{ url_for('new_event') }}">New Event</a></h4>
 
-            <form method="POST" action="{{ url_for('get_event_requests') }}">
+            <form method="POST" action="{{ url_for('get_events') }}">
                 <div class="form-field">Search: {{ search_form.search }}  {{ search_form.submit }}</div>
             </form>
 
@@ -50,19 +50,37 @@
                     <td>{{ event.location }}</td>
                    <td><a href="{{ url_for('update_event', event_id=event.id) }}">Edit</a></td>
                    <td>
+                        <form action="{{ url_for('invite_user', event_id=event.id) }}" method="Post">
+                            <div class="form-field">Invite Users: {{ invite_form.username }}  {{ invite_form.invite }}</div>
+                        </form>
                        <form action="{{ url_for('delete_event', event_id=event.id) }}" method="post">
                            <input type="submit" value="Delete"/>
                        </form>
-                       <form action="{{ url_for('invite_user', event_id=event.id) }}" method="Post">
-                            <div class="form-field">Invite Users: {{ invite_form.username }}  {{ invite_form.invite }}</div>
-                        </form>
                    </td>
                </tr>
                {% endfor %}
            </table>
             </div>
             <div class="column left">
-            <h2>Event Feed</h2>
+            <h2>Public Event Feed</h2>
+
+            <table class="tableFormat">
+                <tr>
+                     <th class ="wide">Event Name</th>
+                     <th class ="wide">Start Date</th>
+                     <th class ="wide">Location</th>
+                 </tr>
+                {% for event in feed_events %}
+                <tr bgcolor= {{event.color}}>
+                    <td><a href="{{ url_for('get_event', event_id=event.id) }}">{{ event.name }}</a></td>
+                     <td>{{ event.start_date }}</td>
+                     <td>{{ event.location }}</td>
+                     <td>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+
         </div>
        </div>
    </body>
