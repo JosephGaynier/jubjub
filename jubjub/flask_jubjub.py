@@ -47,8 +47,8 @@ def new_event():
             else:
                 is_public = False
 
-            start_date = datetime.strptime(request.form['start_date'], '%m/%d/%y %H:%M:%S')
-            end_date = datetime.strptime(request.form['end_date'], '%m/%d/%y %H:%M:%S')
+            start_date = datetime.strptime(request.form['start_date'][2:19], '%y-%m-%d %H:%M:%S')
+            end_date = datetime.strptime(request.form['start_date'][2:19], '%y-%m-%d %H:%M:%S')
 
             newEntry = Event(name, start_date, end_date, location, description, color, is_public, session['user_id'])
             db.session.add(newEntry)
@@ -73,8 +73,8 @@ def update_event(event_id):
                 event.is_public = True
             else:
                 event.is_public = False
-            event.start_date = date.today()
-            event.end_date = date.today()
+            event.start_date = datetime.strptime(request.form['start_date'][2:19], '%y-%m-%d %H:%M:%S')
+            event.end_date = datetime.strptime(request.form['start_date'][2:19], '%y-%m-%d %H:%M:%S')
             db.session.commit()
             return redirect(url_for('get_events'))
         else:
