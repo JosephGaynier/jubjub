@@ -28,7 +28,9 @@ with app.app_context():
 def get_event(event_id):
     if session.get('user'):
         my_event = db.session.query(Event).filter_by(id=event_id).one()
-        return render_template('event.html', event=my_event, user=session['user'])
+        user = db.session.query(User).filter_by(id=my_event.user_id).one()
+        first_name = user.first_name
+        return render_template('event.html', event=my_event, first_name=first_name, user=session['user'])
     else:
         return redirect(url_for('login'))
 
@@ -49,9 +51,7 @@ def new_event():
             end_date = datetime.strptime(request.form['end_date'], '%m/%d/%y %H:%M:%S')
 
             newEntry = Event(name, start_date, end_date, location, description, color, is_public, session['user_id'])
-            #newRSVPEntry = RsvpData(newEntry.id, session['user_id'])
             db.session.add(newEntry)
-            #db.session.add(newRSVPEntry)
             db.session.commit()
             return redirect(url_for('get_events'))
         else:
